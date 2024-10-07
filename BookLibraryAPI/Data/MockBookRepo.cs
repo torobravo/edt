@@ -4,6 +4,16 @@ namespace BookLibraryAPI.Data
 {
     public class MockBookRepo : IBookRepo
     {
+        public void CreateBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBook(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
         public Book GetBookById(int id)
         {
             return new Book { Id = 1, Title = "MockBookName1", Author = "MockAuthor1", Year = 1990, Isbn = "12345X"};
@@ -19,6 +29,16 @@ namespace BookLibraryAPI.Data
             };
 
             return books;
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateBook(Book book)
+        {
+            throw new NotImplementedException();
         }
     }
 }

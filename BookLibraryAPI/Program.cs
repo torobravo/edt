@@ -1,10 +1,13 @@
 using BookLibraryAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson( s => 
+    s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver()
+);
 
 // create once per client request
 // builder.Services.AddScoped<IBookRepo, MockBookRepo>();
@@ -19,6 +22,9 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
