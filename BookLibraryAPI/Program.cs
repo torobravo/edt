@@ -5,8 +5,10 @@ using Newtonsoft.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers().AddNewtonsoftJson( s => 
-    s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver()
+builder.Services.AddControllers().AddNewtonsoftJson( s => {
+    s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+    s.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+}
 );
 
 // create once per client request

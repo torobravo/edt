@@ -1,4 +1,5 @@
 using BookLibraryAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryAPI.Data
 {
@@ -21,17 +22,22 @@ namespace BookLibraryAPI.Data
 
         public Patron GetPatronById(int id)
         {
-            return _context.Patrons.FirstOrDefault(p => p.Id == id);
+            return _context.Patrons.Include(p => p.BorrowedBooks).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Patron> GetPatrons()
         {
-            return _context.Patrons.ToList();
+            return _context.Patrons.Include(p => p.BorrowedBooks).ToList();
         }
 
         public bool SaveChanges()
         {
             return _context.SaveChanges() > 0;
+        }
+
+        public void UpdatePatron(Patron patron)
+        {
+            // do nothing. DbContext will take care
         }
     }
 }

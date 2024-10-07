@@ -8,12 +8,14 @@ namespace BookLibraryAPI.Profiles
     {
         public PatronsProfile()
         {
+            // Converts Patron to PatronReadDto
             CreateMap<Patron, PatronReadDto>()
                 .ForMember(
                     dest => dest.FullName,
                     src => src.MapFrom(x => x.LastName + ", " + x.FirstName)
                 );
 
+            // Converts PatronCreateDto to Patron
             CreateMap<PatronCreateDto, Patron>();
         }
     }

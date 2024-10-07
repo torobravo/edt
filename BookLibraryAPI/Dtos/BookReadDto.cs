@@ -1,3 +1,5 @@
+using BookLibraryAPI.Models;
+
 namespace BookLibraryAPI.Dtos
 {
     public class BookReadDto
@@ -7,5 +9,7 @@ namespace BookLibraryAPI.Dtos
         public string Author { get; set; }
         public int Year { get; set; }
         public string Isbn { get; set; }
+        public int? PatronId { get; set; }
+        public PatronReadDto? Patron { get; set; }
     }
 }

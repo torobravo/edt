@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace BookLibraryAPI.Models
 {
@@ -14,6 +15,6 @@ namespace BookLibraryAPI.Models
         public string? ModifiedBy {get; set;}
 
         public int? PatronId { get; set; }
-        public Patron? Patron { get; set; }
+        public Patron Patron { get; set; }
     }
 }

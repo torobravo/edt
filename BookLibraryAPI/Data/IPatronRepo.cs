@@ -8,5 +8,6 @@ namespace BookLibraryAPI.Data
         IEnumerable<Patron> GetPatrons();
         Patron GetPatronById(int id);
         void CreatePatron(Patron patron);
+        void UpdatePatron(Patron patron);
     }
 }

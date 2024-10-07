@@ -1,4 +1,5 @@
 using BookLibraryAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryAPI.Data
 {
@@ -29,12 +30,12 @@ namespace BookLibraryAPI.Data
 
         public Book GetBookById(int id)
         {
-            return _context.Books.FirstOrDefault(p => p.Id == id);
+            return _context.Books.Include(p => p.Patron).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Book> GetBooks()
         {
-            return _context.Books.ToList();
+            return _context.Books.Include(p => p.Patron).ToList();
         }
 
         public bool SaveChanges()

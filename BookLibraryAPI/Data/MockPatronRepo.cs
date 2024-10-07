@@ -29,5 +29,10 @@ namespace BookLibraryAPI.Data
         {
             throw new NotImplementedException();
         }
+
+        public void UpdatePatron(Patron patron)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
