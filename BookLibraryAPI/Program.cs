@@ -6,6 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+// create once per client request
+// builder.Services.AddScoped<IBookRepo, MockBookRepo>();
+// builder.Services.AddScoped<IPatronRepo, MockPatronRepo>();
+builder.Services.AddScoped<IBookRepo, InMemBookRepo>();
+builder.Services.AddScoped<IPatronRepo, InMemPatronRepo>();
+
 // In-Memory Database
 builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseInMemoryDatabase("BookLibrary"));

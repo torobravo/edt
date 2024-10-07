@@ -1,7 +1,6 @@
 using BookLibraryAPI.Data;
 using BookLibraryAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryAPI.Controllers
 {
@@ -9,18 +8,32 @@ namespace BookLibraryAPI.Controllers
     [ApiController]
     public class PatronsController : ControllerBase
     {
-        private readonly LibraryContext _context;
+        private readonly IPatronRepo _repo;
 
-        public PatronsController(LibraryContext context)
+        public PatronsController(IPatronRepo repository)
         {
-            _context = context;
+            _repo = repository;
         }
 
         // GET: api/patrons
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Patron>>> GetPatrons()
+        public ActionResult<IEnumerable<Patron>> GetPatrons()
         {
-            return await _context.Patrons.Include(p => p.BorrowedBooks).ToListAsync();
+            var patrons = _repo.GetPatrons();
+
+            return Ok(patrons);
+        }
+
+        // GET: api/patrons/1
+        [HttpGet("{id}")]
+        public ActionResult<Patron> GetPatron(int id)
+        {
+            var patron = _repo.GetPatronById(id);
+
+            if (patron == null)
+                return NotFound();
+
+            return patron;
         }
     }
 }

@@ -1,7 +1,6 @@
 using BookLibraryAPI.Data;
 using BookLibraryAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BookLibraryAPI.Controllers
 {
@@ -9,16 +8,32 @@ namespace BookLibraryAPI.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly LibraryContext _context;
+        private readonly IBookRepo _repo;
 
-        public BooksController(LibraryContext context) {
-            _context = context;
+        public BooksController(IBookRepo repository)
+        {
+            _repo = repository;
         }
 
-        // GET: api/Books
-        public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
+        // GET: api/books
+        [HttpGet]
+        public ActionResult<IEnumerable<Book>> GetBooks()
         {
-            return await _context.Books.ToListAsync();
+            var books = _repo.GetBooks();
+
+            return Ok(books);
+        }
+
+        // GET: api/books/1
+        [HttpGet("{id}")]
+        public ActionResult<Book> GetBook(int id)
+        {
+            var book = _repo.GetBookById(id);
+
+            if (book == null)
+                return NotFound();
+
+            return book;
         }
 
     }
