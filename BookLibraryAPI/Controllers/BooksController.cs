@@ -42,7 +42,7 @@ namespace BookLibraryAPI.Controllers
             if (book == null)
                 return NotFound();
 
-            // Conver to dto
+            // Convert to dto
             var bookReadDto = _mapper.Map<BookReadDto>(book);
 
             // return 200-OK

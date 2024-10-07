@@ -10,7 +10,6 @@ namespace BookLibraryAPI.Models
         public required string Author { get; set; }
         public int Year { get; set; }
         public required string Isbn { get; set; }
-        public double Price { get; set; }
         public DateTime CreatedAt { get; set; }
         public string? ModifiedBy {get; set;}
 
