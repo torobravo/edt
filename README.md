@@ -24,7 +24,7 @@ To run the tests, use the following command:
 You can access the API via Swagger by navigating to http://localhost:5290/swagger/index.html in your browser or Postman to test the API.
 
 #### Example Endpoints
-##### Books
+#### Books
 * GET /api/books - Retrieve all books.
 * GET /api/books/{id} - Retrieve a book by its Id.
 * POST /api/books - Add a new book.
@@ -34,7 +34,7 @@ You can access the API via Swagger by navigating to http://localhost:5290/swagge
 * PUT /api/books/{patronId}/checkout/{bookId} - Checkout a book.
 * PUT /api/books/checkin/{bookId} - Checkin a book.
 
-##### Patrons
+#### Patrons
 * GET /api/patrons - Retrieve all patrons with their checked-out books.
 * GET /api/patrons/{id} - Retrieve a patron and their checked-out books.
 * POST /api/patrons - Create a new patron.

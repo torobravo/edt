@@ -33,7 +33,7 @@ namespace BookLibraryAPI.Tests
         }
 
         [Fact]
-        public void Test1_GetBooks()
+        public void GetBook_ReturnsOk_WhenGetListOfBooks()
         {
             _mockBookRepo.Setup(s => s.GetBooks());
 
