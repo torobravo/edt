@@ -1,8 +1,10 @@
-# edt
-Software Developer Technical Assessment Education Development Trust - October 2024
+# BookLibraryAPI
+Implementation of a web API in C# using .NET 8 to manage a small book library.  This system enable basic operations related to books in the system. An in-memory database is used for demonstration purposes, but it can be swapped for a real database without breaking the current implementation.
+
+Software Developer Technical Assessment for Education Development Trust - October 2024
 
 ## Setup
-Run the following command to clone the project to your local repository
+Run the following command to clone the project into your local repository
 ```bash
     git clone https://github.com/torobravo/edt.git
 ```
